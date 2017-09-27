@@ -9,7 +9,7 @@ public class Card {
 	private int rank;
 	private final String[] SUITS = new String[] {"Spades","Diamonds","Hearts","Clubs"}; 
 	private final int[] SUITNUM = new int[] {0,1,2,3};
-	private final String[] RANKS = new String[] {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"};
+	private final String[] RANKS = new String[] {"two","three","four","five","six","seven","eight","nine","ten","jack","queen","king","ace"};
 	
 	public Card() {
 		suit = SUITS[0];
@@ -18,14 +18,14 @@ public class Card {
 	
 	public Card(int sui, int ran) {
 		if(sui< SUITS.length)
-		suit = sui;
+		suit = SUITS[sui];
 		if(ran < RANKS.length)
 		rank = ran;
 	}
 	
 	public Card(String sui, String ran) {
 		suit = sui;
-		rank = ran;
+		rank = RANKS.indexOf(ran.toLowerCase());
 	}
 	
 }

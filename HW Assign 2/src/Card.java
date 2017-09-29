@@ -11,8 +11,8 @@ public class Card implements Comparable<Card>{
 
 	private String suit;
 	private String rank;
-	private final String[] SUITS = new String[] { "Clubs", "Diamonds", "Hearts", "Spades"};
-	private final String[] RANKS = new String[] { "ERROR", "ERROR", "Two", "Three", "Four", "Five", "Six", "Seven",
+	private static final String[] SUITS = new String[] { "Clubs", "Diamonds", "Hearts", "Spades"};
+	private static final String[] RANKS = new String[] {"Two", "Three", "Four", "Five", "Six", "Seven",
 			"Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
 	
 
@@ -32,10 +32,10 @@ public class Card implements Comparable<Card>{
 		else
 			suit = SUITS[0];
 
-		if (ran < RANKS.length)
-			rank = RANKS[ran];
+		if (ran != 0 && ran != 1)
+			rank = RANKS[ran-2];
 		else
-			rank = RANKS[0];
+			throw new IllegalArgumentException("Invalid Number passed in");
 	}
 	
 	/**
@@ -54,12 +54,13 @@ public class Card implements Comparable<Card>{
 	 * @param ran Rank represented as an int between 2 and 14 inclusive
 	 */
 	public Card(String sui, int ran) {
+		
 		suit = SUITS[findSuit(sui)];
-		if (ran < RANKS.length)
-			rank = RANKS[ran];
+		
+		if (ran != 0 && ran != 1)
+			rank = RANKS[ran-2];
 		else
-			rank = RANKS[0];
-	}
+			throw new IllegalArgumentException("Invalid Number passed in");	}
 	
 	/**
 	 * 
@@ -67,10 +68,12 @@ public class Card implements Comparable<Card>{
 	 * @param ran Rank represented as a String
 	 */
 	public Card(int sui, String ran) {
+		
 		if (sui < SUITS.length)
 			suit = SUITS[sui];
 		else
 			suit = SUITS[0];
+		
 		rank = RANKS[findRank(ran)];
 	}
 	
@@ -106,6 +109,20 @@ public class Card implements Comparable<Card>{
 	public String getRankStr(){
 		return rank;
 	}
+	
+	/**
+	 * @return the sUITS
+	 */
+	public static String[] getSUITS() {
+		return SUITS;
+	}
+
+	/**
+	 * @return the rANKS
+	 */
+	public static String[] getRANKS() {
+		return RANKS;
+	}
 
 	// Private helper methods
 	private int findRank(String rank) {
@@ -133,7 +150,7 @@ public class Card implements Comparable<Card>{
 	
 	/**
 	 * @return if cards are equal based on suit and rank
-	 * @param another card 
+	 * @param other another card 
 	 */
 	public boolean equals(Object other){
 		if(other != null)

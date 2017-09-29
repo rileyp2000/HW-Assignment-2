@@ -20,6 +20,17 @@ public class RankComparator implements Comparator<Card> {
 		ascending = a;
 	}
 	
+	/**
+	 * @return if cards are equal based on suit and rank
+	 * @param comp a card
+	 * @param other another card 
+	 */
+	public boolean equals(Card comp, Card other){
+		if(other != null)
+			return comp.getSuit().equals(other.getSuit()) && comp.getRankStr().equals(other.getRankStr());
+		else
+			return false;
+	}
 	
 	/**
 	 * @param c1 A card

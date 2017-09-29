@@ -7,19 +7,18 @@
  * @author Patrick Riley
  */
 
-public class Card {
+public class Card implements Comparable<Card>{
 
 	private String suit;
 	private String rank;
-	private final String[] SUITS = new String[] { "Spades", "Diamonds", "Hearts", "Clubs" };
-	private final int[] SUITNUM = new int[] { 0, 1, 2, 3 };
+	private final String[] SUITS = new String[] { "Clubs", "Diamonds", "Hearts", "Spades"};
 	private final String[] RANKS = new String[] { "ERROR", "ERROR", "Two", "Three", "Four", "Five", "Six", "Seven",
 			"Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
 	
 
 	public Card() {
 		suit = SUITS[0];
-		rank = RANKS[0];
+		rank = RANKS[2];
 	}
 	
 	/**
@@ -45,8 +44,8 @@ public class Card {
 	 * @param ran Rank represented as a String
 	 */
 	public Card(String sui, String ran) {
-		suit = findSuit(sui);
-		rank = findRank(ran);
+		suit = SUITS[findSuit(sui)];
+		rank = RANKS[findRank(ran)];
 	}
 	
 	/**
@@ -55,7 +54,7 @@ public class Card {
 	 * @param ran Rank represented as an int between 2 and 14 inclusive
 	 */
 	public Card(String sui, int ran) {
-		suit = findSuit(sui);
+		suit = SUITS[findSuit(sui)];
 		if (ran < RANKS.length)
 			rank = RANKS[ran];
 		else
@@ -72,25 +71,85 @@ public class Card {
 			suit = SUITS[sui];
 		else
 			suit = SUITS[0];
-		rank = findRank(ran);
+		rank = RANKS[findRank(ran)];
 	}
 	
+	//Getters 
+	/**
+	 * 
+	 * @return Suit 
+	 */
+	public String getSuit() {
+		return suit;
+	}
 	
+	/**
+	 * 
+	 * @return suit
+	 */
+	public int getSuitInt(){
+		return findSuit(suit);
+	}
+	
+	/**
+	 * 
+	 * @return Rank
+	 */
+	public int getRank() {
+		return findRank(rank);
+	}
+	
+	/**
+	 * 
+	 * @return rank
+	 */
+	public String getRankStr(){
+		return rank;
+	}
 
 	// Private helper methods
-	private String findRank(String rank) {
-		for (String s : RANKS) {
-			if (s.toLowerCase().equals(rank.toLowerCase()))
-				return s;
+	private int findRank(String rank) {
+		for (int i = 0; i < RANKS.length; i++) {
+			if (RANKS[i].toLowerCase().equals(rank.toLowerCase()))
+				return i;
 		}
-		return RANKS[2];
+		return 0;
 	}
 
-	private String findSuit(String suit) {
-		for (String s : SUITS)
-			if (s.toLowerCase().equals(suit.toLowerCase()))
-				return s;
-		return SUITS[0];
+	private int findSuit(String suit) {
+		for (int i = 0; i < SUITS.length; i++)
+			if (SUITS[i].toLowerCase().equals(suit.toLowerCase()))
+				return i;
+		return 0;
 	}
-
+	
+	//Methods
+	/**
+	 * @return returns card in formula rank of suit
+	 */
+	public String toString(){
+		return rank + " of " + suit;
+	}
+	
+	/**
+	 * @return if cards are equal based on suit and rank
+	 * @param another card 
+	 */
+	public boolean equals(Object other){
+		if(other != null)
+			return suit.equals(((Card)other).getSuit()) && rank.equals(((Card)other).getRankStr());
+		else
+			return false;
+	}
+	
+	/**
+	 * 
+	 * @param c another card
+	 * @return difference in rank between the cards
+	 */
+	public int compareTo(Card c){
+		return getRank() - c.getRank();
+	}
+	
+	
 }

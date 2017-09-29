@@ -2,7 +2,7 @@
  * <p>
  * This is the class that represents a card for hw assignment 2
  * </p>
- * Sep 27, 2017
+ * @date Sep 27, 2017
  * 
  * @author Patrick Riley
  */

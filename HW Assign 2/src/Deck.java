@@ -60,12 +60,15 @@ public class Deck {
 
 		for (int i = 0; i < replace.length - 1; i++) {
 			int rand = (int) (Math.random() * TOTALCARDS);
-			if (cards[rand] != null)
-				replace[i] = cards[rand];
+			while (cards[rand] == null)
+				rand = (int) (Math.random() * TOTALCARDS);
+
+			Card c = cards[rand];
+			replace[i] = cards[rand];
 			cards[rand] = null;
 
 		}
-		cards = replace;
+		setCards(replace);
 
 	}
 

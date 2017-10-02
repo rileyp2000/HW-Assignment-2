@@ -19,7 +19,7 @@ public class DeckTester {
 		Deck d = new Deck();
 		System.out.println(d);
 		d.shuffle();
-		System.out.println("\n\n\n\n" + d);
+		System.out.println( d);
 
 	}
 

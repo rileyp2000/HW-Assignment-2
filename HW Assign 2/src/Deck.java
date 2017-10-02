@@ -18,12 +18,12 @@ public class Deck {
 	}
 	
 	public Deck(boolean s) {
-		cards = createDeck();
+		cards = createDeck(s);
 		topCard = cards.length -1;
 		sorted = s;
 	}
 
-	private Card[] createDeck() { //FIX THIS!@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	private Card[] createDeck(boolean sorted) { //FIX THIS!@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 		Card[] cards = new Card[52];
 		String[] suits = Card.getSUITS();
@@ -37,7 +37,10 @@ public class Deck {
 			}
 		}
 		
-		return cards;
+		if(sorted)
+			return cards;
+		else
+			return shuffle(cards);
 				
 				
 	}

@@ -49,6 +49,7 @@ public class Deck {
 
 		if (!sorted)
 			shuffle();
+		topCard = cards.length - 1;
 
 		return cards;
 
@@ -70,17 +71,15 @@ public class Deck {
 
 	public String toString() {
 		String result = "";
-		if (topCard == NUMCARDS - 1) {
-			for (int s = 0; s < NUMCARDS; s += NUMSUITS) {
-				for (int r = 0; r < NUMSUITS; r++) {
-					result += cards[NUMCARDS * s + r] + "\t";
-				}
+		if (topCard == TOTALCARDS - 1) {
+			for (int r = 0; r < NUMCARDS; r++) {
+				for (int s = 0; s < NUMSUITS; s++)
+					result += cards[NUMCARDS * s + r] + "	";
 				result += "\n";
 
 			}
-		}
-		else {
-			for(Card c : cards)
+		} else {
+			for (Card c : cards)
 				result += c.toString() + "\n";
 		}
 		return result;

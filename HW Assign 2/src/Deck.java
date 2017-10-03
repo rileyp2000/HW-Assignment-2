@@ -170,7 +170,11 @@ public class Deck {
 	 */
 	public Card pick() {
 		int numCards = cards.length - 1;
-		int randCard = (int) (Math.random() * numCards);
+		int randCard = 0;
+		
+		do {randCard = (int) (Math.random() * numCards);}
+		while(cards[randCard] == null);
+			
 		return cards[randCard];
 	}
 

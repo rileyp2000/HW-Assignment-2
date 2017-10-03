@@ -78,7 +78,7 @@ public class Deck {
 	public void shuffle() {
 		Card[] replace = new Card[TOTALCARDS];
 
-		for (int i = 0; i < replace.length - 1; i++) {
+		for (int i = 0; i < TOTALCARDS; i++) {
 			int rand = (int) (Math.random() * TOTALCARDS);
 			while (cards[rand] == null)
 				rand = (int) (Math.random() * TOTALCARDS);
@@ -143,17 +143,20 @@ public class Deck {
 	 */
 	public Deck[] deal(int numHands, int numCards) {
 		Deck[] ret = new Deck[numHands];
-		Card[] hand = new Card[numCards];
+
 		if (numHands * numCards <= TOTALCARDS) {
 			for (int i = 0; i < numHands; i++) {
+				Card[] hand = new Card[numCards];
+				ret[i] = new Deck();
 				int indexControl = 0;
-				for (int c = topCard; c >= numCards; c--) {
+				for (int c = topCard; c > topCard - numCards; c--) {
 					hand[indexControl] = cards[c];
 					cards[c] = null;
 					indexControl++;
 				}
+				topCard = topCard - numCards;
 				ret[i].setCards(hand);
-				topCard -= numCards;
+				ret[i].topCard = ret[i].cards.length - 1;
 			}
 			return ret;
 		} else

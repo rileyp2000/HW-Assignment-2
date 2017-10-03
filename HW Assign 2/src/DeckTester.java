@@ -19,8 +19,13 @@ public class DeckTester {
 		Deck d = new Deck();
 		//System.out.println(d);
 		//System.out.println("\n\n\n");
+		//System.out.println(d);
 		d.shuffle();
-		System.out.println( d);
+		//System.out.println("\n\n" + d);
+		
+		Deck[] test = d.deal(2,3);
+		for(Deck de : test)
+			System.out.println(de);
 
 	}
 

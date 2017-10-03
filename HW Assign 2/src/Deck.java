@@ -23,18 +23,33 @@ public class Deck {
 
 	}
 
+	/**
+	 * 
+	 * @param s
+	 *            if sorted or not
+	 */
 	public Deck(boolean s) {
 		cards = createDeck(s);
 		topCard = cards.length - 1;
 		sorted = s;
 	}
 
+	/**
+	 * 
+	 * @param c
+	 *            array of cards
+	 */
 	public void setCards(Card[] c) {
 		cards = c;
 	}
 
-	private Card[] createDeck(boolean sorted) { // FIX THIS!@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+	/**
+	 * 
+	 * @param sorted
+	 *            if sorted or not
+	 * @return array of cards that represent a deck
+	 */
+	private Card[] createDeck(boolean sorted) {
 		Card[] cards = new Card[52];
 		String[] suits = Card.getSUITS();
 		String[] ranks = Card.getRANKS();
@@ -55,6 +70,11 @@ public class Deck {
 
 	}
 
+	/**
+	 * <p>
+	 * This shuffles the deck
+	 * </p>
+	 */
 	public void shuffle() {
 		Card[] replace = new Card[TOTALCARDS];
 
@@ -69,9 +89,15 @@ public class Deck {
 
 		}
 		setCards(replace);
+		sorted = false;
 
 	}
 
+	/**
+	 * <p>
+	 * Converts deck to String
+	 * </p>
+	 */
 	public String toString() {
 		String result = "";
 		if (topCard == TOTALCARDS - 1) {
@@ -89,6 +115,12 @@ public class Deck {
 
 	}
 
+	/**
+	 * 
+	 * @param d
+	 *            A deck to compare to
+	 * @return boolean If the decks are equal
+	 */
 	public boolean equals(Deck d) {
 		if (cards.length != d.cards.length)
 			return false;
@@ -99,6 +131,52 @@ public class Deck {
 		}
 
 		return true;
+	}
+
+	/**
+	 * 
+	 * @param numHands
+	 *            number of desired hands
+	 * @param numCards
+	 *            number of desired cards in each hand
+	 * @return Deck[] the hands represented as deck arrays
+	 */
+	public Deck[] deal(int numHands, int numCards) {
+		Deck[] ret = new Deck[numHands];
+		Card[] hand = new Card[numCards];
+		if (numHands * numCards <= TOTALCARDS) {
+			for (int i = 0; i < numHands; i++) {
+				int indexControl = 0;
+				for (int c = topCard; c >= numCards; c--) {
+					hand[indexControl] = cards[c];
+					cards[c] = null;
+					indexControl++;
+				}
+				ret[i].setCards(hand);
+				topCard -= numCards;
+			}
+			return ret;
+		} else
+			return null;
+
+	}
+
+	/**
+	 * 
+	 * @return Card a randomly picked card from the deck
+	 */
+	public Card pick() {
+		int numCards = cards.length - 1;
+		int randCard = (int) (Math.random() * numCards);
+		return cards[randCard];
+	}
+
+	public void selectionSort() {
+
+	}
+
+	public void mergeSort() {
+
 	}
 
 }

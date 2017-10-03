@@ -179,7 +179,14 @@ public class Deck {
 	}
 
 	public void selectionSort() {
-
+		for(int n = cards.length; n > 1; n--) {
+			
+			int max = 0; 
+			for(int i = 1; i < n; i++) {
+				if(cards[i].compareTo(cards[max]) > 0)
+					max = i;
+			}
+		}
 	}
 
 	public void mergeSort() {

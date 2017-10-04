@@ -1,5 +1,5 @@
 /**
- * <p></p> 
+ * <p>This is a tester for the deck class</p> 
  * Oct 2, 2017
  * @author Patrick Riley
  */
@@ -18,18 +18,25 @@ public class DeckTester {
 	public static void main(String[] args) {
 		Deck d = new Deck();
 		System.out.println(d);
+	
 		//System.out.println("\n\n\n");
 		//System.out.println(d);
 		d.shuffle();
-		System.out.println("\n\n" + d);
+		System.out.println("\n\nShuffled: \n" + d);
 		
-		//System.out.println(d.pick());
+		System.out.println("Picked Card: " + d.pick());
+	
 		d.selectionSort();
-		System.out.println(d);
+		System.out.println("Selection Sort: \n" + d);
+		
+		d.shuffle();
+		
+		d.mergeSort();
+		System.out.println("MergeSort: \n" + d + "\n\n\n");
 				
-		/*Deck[] test = d.deal(2,3);
+		Deck[] test = d.deal(2,3);
 		for(Deck de : test)
-			System.out.println(de);*/
+			System.out.println(de);
 
 	}
 

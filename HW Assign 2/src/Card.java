@@ -2,7 +2,7 @@
  * <p>
  * This is the class that represents a card for hw assignment 2
  * </p>
- * @date Sep 27, 2017
+ * 
  * 
  * @author Patrick Riley
  */
@@ -11,9 +11,9 @@ public class Card implements Comparable<Card>{
 
 	private String suit;
 	private String rank;
-	private static final String[] SUITS = new String[] { "Clubs", "Diamonds", "Hearts", "Spades"};
-	private static final String[] RANKS = new String[] {"Two", "Three", "Four", "Five", "Six", "Seven",
-			"Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
+	private static final String[] SUITS = new String[] { " Clubs ", "Diamonds", "Hearts ", "Spades "};
+	private static final String[] RANKS = new String[] {" Two ", "Three", "Four ", "Five ", " Six ", "Seven",
+			"Eight", "Nine ", " Ten ", "Jack ", "Queen ", "King ", " Ace " };
 	
 
 	public Card() {
@@ -80,7 +80,7 @@ public class Card implements Comparable<Card>{
 	//Getters 
 	/**
 	 * 
-	 * @return Suit 
+	 * @return Suit the suit as a string
 	 */
 	public String getSuit() {
 		return suit;
@@ -88,7 +88,7 @@ public class Card implements Comparable<Card>{
 	
 	/**
 	 * 
-	 * @return suit
+	 * @return suit the suit as an int
 	 */
 	public int getSuitInt(){
 		return findSuit(suit);
@@ -96,7 +96,7 @@ public class Card implements Comparable<Card>{
 	
 	/**
 	 * 
-	 * @return Rank
+	 * @return Rank the rank as an int
 	 */
 	public int getRank() {
 		return findRank(rank);
@@ -104,38 +104,48 @@ public class Card implements Comparable<Card>{
 	
 	/**
 	 * 
-	 * @return rank
+	 * @return rank the rank as a String
 	 */
 	public String getRankStr(){
 		return rank;
 	}
 	
 	/**
-	 * @return the sUITS
+	 * @return String[] the sUITS list
 	 */
 	public static String[] getSUITS() {
 		return SUITS;
 	}
 
 	/**
-	 * @return the rANKS
+	 * @return String[] the rANKS list
 	 */
 	public static String[] getRANKS() {
 		return RANKS;
 	}
 
 	// Private helper methods
+	/**
+	 * 
+	 * @param rank a particular rank
+	 * @return int the index of the rank
+	 */
 	private int findRank(String rank) {
 		for (int i = 0; i < RANKS.length; i++) {
-			if (RANKS[i].toLowerCase().equals(rank.toLowerCase()))
+			if (RANKS[i].trim().toLowerCase().equals(rank.trim().toLowerCase()))
 				return i;
 		}
 		return 0;
 	}
-
+	
+	/**
+	 * 
+	 * @param suit a particular suit
+	 * @return int the index of the suit
+	 */
 	private int findSuit(String suit) {
 		for (int i = 0; i < SUITS.length; i++)
-			if (SUITS[i].toLowerCase().equals(suit.toLowerCase()))
+			if (SUITS[i].trim().toLowerCase().equals(suit.trim().toLowerCase()))
 				return i;
 		return 0;
 	}

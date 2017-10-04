@@ -171,26 +171,94 @@ public class Deck {
 	public Card pick() {
 		int numCards = cards.length - 1;
 		int randCard = 0;
-		
-		do {randCard = (int) (Math.random() * numCards);}
-		while(cards[randCard] == null);
-			
+
+		do {
+			randCard = (int) (Math.random() * numCards);
+		} while (cards[randCard] == null);
+
 		return cards[randCard];
 	}
 
+	/**
+	 * <p>
+	 * Sorts the deck according to the selection sort algorithm. Taken from the
+	 * Skylit website student files
+	 * </p>
+	 */
 	public void selectionSort() {
-		for(int n = cards.length; n > 1; n--) {
-			
-			int max = 0; 
-			for(int i = 1; i < n; i++) {
-				if(cards[i].compareTo(cards[max]) > 0)
+		for (int n = cards.length; n > 1; n--) {
+
+			int max = 0;
+			for (int i = 1; i < n; i++) {
+				if (cards[i].compareTo(cards[max]) > 0)
 					max = i;
 			}
+
+			Card temp = cards[max];
+			cards[max] = cards[n - 1];
+			cards[n - 1] = temp;
 		}
 	}
 
-	public void mergeSort() {
+	public static void sort(Card[] a) {
+		int n = a.length;
+		Card[] temp = new Card[n];
+		recursiveSort(a, 0, n - 1, temp);
+	}
 
+	// Recursive helper method: sorts a[from], ..., a[to]
+	private static void recursiveSort(Card[] a, int from, int to, Card[] temp) {
+		if (to - from < 2) // Base case: 1 or 2 elements
+		{
+			if (to > from && a[to].compareTo(a[from]) < 0) {
+				// swap a[to] and a[from]
+				Card aTemp = a[to];
+				a[to] = a[from];
+				a[from] = aTemp;
+			}
+		} else // Recursive case
+		{
+			int middle = (from + to) / 2;
+			recursiveSort(a, from, middle, temp);
+			recursiveSort(a, middle + 1, to, temp);
+			merge(a, from, middle, to, temp);
+		}
+	}
+
+	// Merges a[from] ... a[middle] and a[middle+1] ... a[to]
+	// into one sorted array a[from] ... a[to]
+	private static void merge(Card[] a, int from, int middle, int to, Card[] temp) {
+		int i = from, j = middle + 1, k = from;
+
+		// While both arrays have elements left unprocessed:
+		while (i <= middle && j <= to) {
+			if (a[i].compareTo(a[j]) < 0) {
+				temp[k] = a[i]; // Or simply temp[k] = a[i++];
+				i++;
+			} else {
+				temp[k] = a[j];
+				j++;
+			}
+			k++;
+		}
+
+		// Copy the tail of the first half, if any, into temp:
+		while (i <= middle) {
+			temp[k] = a[i]; // Or simply temp[k++] = a[i++]
+			i++;
+			k++;
+		}
+
+		// Copy the tail of the second half, if any, into temp:
+		while (j <= to) {
+			temp[k] = a[j]; // Or simply temp[k++] = a[j++]
+			j++;
+			k++;
+		}
+
+		// Copy temp back into a
+		for (k = from; k <= to; k++)
+			a[k] = temp[k];
 	}
 
 }

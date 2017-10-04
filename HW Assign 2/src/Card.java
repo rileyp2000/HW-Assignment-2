@@ -165,7 +165,13 @@ public class Card implements Comparable<Card>{
 	 * @return difference in rank between the cards
 	 */
 	public int compareTo(Card c){
-		return getRank() - c.getRank();
+		if(getSuitInt() != c.getSuitInt())
+			return RANKS.length * (getSuitInt() - c.getSuitInt());
+		else
+			if(getRank() != c.getRank())
+				return getRank() - c.getRank();
+			else
+				return 0;
 	}
 	
 	

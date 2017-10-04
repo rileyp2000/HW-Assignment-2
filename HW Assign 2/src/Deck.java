@@ -25,7 +25,8 @@ public class Deck {
 
 	/**
 	 * 
-	 * @param s if sorted or not
+	 * @param s
+	 *            if sorted or not
 	 */
 	public Deck(boolean s) {
 		cards = createDeck(s);
@@ -35,7 +36,8 @@ public class Deck {
 
 	/**
 	 * 
-	 * @param c array of cards
+	 * @param c
+	 *            array of cards
 	 */
 	public void setCards(Card[] c) {
 		cards = c;
@@ -43,13 +45,35 @@ public class Deck {
 
 	/**
 	 * 
-	 * @param sorted if sorted or not
+	 * @param s
+	 *            if sorted or not
+	 */
+	public void setSorted(boolean s) {
+		sorted = s;
+	}
+
+	/**
+	 * 
+	 * @param top
+	 *            sets the top card of the deck
+	 */
+	public void setTopCard(int top) {
+		topCard = top;
+	}
+
+	/**
+	 * 
+	 * @param sorted
+	 *            if sorted or not
 	 * @return array of cards that represent a deck
 	 */
 	private Card[] createDeck(boolean sorted) {
+		// the new deck
 		Card[] cards = new Card[52];
+		// the official suits and ranks
 		String[] suits = Card.getSUITS();
 		String[] ranks = Card.getRANKS();
+		// tracks which card to add
 		int cardCounter = 0;
 
 		for (int i = 0; i < NUMSUITS; i++) {
@@ -58,10 +82,12 @@ public class Deck {
 				cardCounter++;
 			}
 		}
-
+		// shuffles the deck if it's not supposed to be sorted
 		if (!sorted)
 			shuffle();
-		topCard = cards.length - 1;
+
+		// sets the value of the topcard;
+		setTopCard(cards.length - 1);
 
 		return cards;
 
@@ -73,20 +99,26 @@ public class Deck {
 	 * </p>
 	 */
 	public void shuffle() {
+		// what to replace the unshuffled deck with
 		Card[] replace = new Card[TOTALCARDS];
 
+		// takes a random card from the original cards and then adds it to the shuffled
+		// array
 		for (int i = 0; i < TOTALCARDS; i++) {
 			int rand = (int) (Math.random() * TOTALCARDS);
+
+			// makes sure doesnt shuffle a previously chosen card
 			while (cards[rand] == null)
 				rand = (int) (Math.random() * TOTALCARDS);
 
-			Card c = cards[rand];
 			replace[i] = cards[rand];
 			cards[rand] = null;
 
 		}
+		// sets the cards to shuffled array
 		setCards(replace);
-		sorted = false;
+		// shows that deck is no longer sorted
+		setSorted(false);
 
 	}
 
@@ -151,9 +183,9 @@ public class Deck {
 					cards[c] = null;
 					indexControl++;
 				}
-				topCard = topCard - numCards;
+				setTopCard(topCard - numCards);
 				ret[i].setCards(hand);
-				ret[i].topCard = ret[i].cards.length - 1;
+				ret[i].setTopCard(ret[i].cards.length - 1);
 			}
 			return ret;
 		} else
@@ -198,7 +230,9 @@ public class Deck {
 	}
 
 	/**
-	 * <p>This is what is called to perform the mergeSort</p>
+	 * <p>
+	 * This is what is called to perform the mergeSort
+	 * </p>
 	 */
 	public void mergeSort() {
 		int n = cards.length;
@@ -207,23 +241,28 @@ public class Deck {
 	}
 
 	/**
-	 * <p>Recursive helper method: sorts cards[from], ..., cards[to]</p>
-	 * @param cards the array of cards of the deck
-	 * @param from where to start sorting from 
-	 * @param to where to end sorting to
-	 * @param temp a temporary place to store Cards
+	 * <p>
+	 * Recursive helper method: sorts cards[from], ..., cards[to]
+	 * </p>
+	 * 
+	 * @param cards
+	 *            the array of cards of the deck
+	 * @param from
+	 *            where to start sorting from
+	 * @param to
+	 *            where to end sorting to
+	 * @param temp
+	 *            a temporary place to store Cards
 	 */
 	private static void recursiveSort(Card[] cards, int from, int to, Card[] temp) {
-		if (to - from < 2) // Base case: 1 or 2 elements
-		{
+		if (to - from < 2) { // Base case: 1 or 2 elements
 			if (to > from && cards[to].compareTo(cards[from]) < 0) {
 				// swap cards[to] and cards[from]
 				Card aTemp = cards[to];
 				cards[to] = cards[from];
 				cards[from] = aTemp;
 			}
-		} else // Recursive case
-		{
+		} else { // Recursive case
 			int middle = (from + to) / 2;
 			recursiveSort(cards, from, middle, temp);
 			recursiveSort(cards, middle + 1, to, temp);
@@ -231,14 +270,23 @@ public class Deck {
 		}
 	}
 
-	// 
+	
 	/**
-	 * <p>Merges cards[from] ... cards[middle] and cards[middle+1] ... cards[to] into one sorted array cards[from] ... cards[to]</p>
-	 * @param cards the array of cards of the deck
-	 * @param from where to start merging from 
-	 * @param middle middle of the array
-	 * @param to where to end merging
-	 * @param temp place to store temporary cards
+	 * <p>
+	 * Merges cards[from] ... cards[middle] and cards[middle+1] ... cards[to] into
+	 * one sorted array cards[from] ... cards[to]
+	 * </p>
+	 * 
+	 * @param cards
+	 *            the array of cards of the deck
+	 * @param from
+	 *            where to start merging from
+	 * @param middle
+	 *            middle of the array
+	 * @param to
+	 *            where to end merging
+	 * @param temp
+	 *            place to store temporary cards
 	 */
 	private static void merge(Card[] cards, int from, int middle, int to, Card[] temp) {
 		int i = from;
@@ -247,22 +295,20 @@ public class Deck {
 
 		// While both arrays have elements left unprocessed:
 		while (i <= middle && j <= to) {
-			if (cards[i].compareTo(cards[j]) < 0) 
-				temp[k] = cards[i++]; 
-			 else 
+			if (cards[i].compareTo(cards[j]) < 0)
+				temp[k] = cards[i++];
+			else
 				temp[k] = cards[j++];
 			k++;
 		}
 
 		// Copy the tail of the first half, if any, into temp:
-		while (i <= middle) 
-			temp[k++] = cards[i++]; 
-		
+		while (i <= middle)
+			temp[k++] = cards[i++];
 
 		// Copy the tail of the second half, if any, into temp:
-		while (j <= to) 
-			temp[k++] = cards[j++]; 
-		
+		while (j <= to)
+			temp[k++] = cards[j++];
 
 		// Copy temp back into cards
 		for (k = from; k <= to; k++)

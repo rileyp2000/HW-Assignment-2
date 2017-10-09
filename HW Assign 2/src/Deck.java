@@ -132,7 +132,7 @@ public class Deck {
 		if (topCard == TOTALCARDS - 1) {
 			for (int r = 0; r < NUMCARDS; r++) {
 				for (int s = 0; s < NUMSUITS; s++)
-					result += cards[NUMCARDS * s + r] + "	";
+					result += cards[NUMCARDS * s + r] + "\t";
 				result += "\n";
 
 			}

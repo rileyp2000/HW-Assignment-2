@@ -11,9 +11,8 @@ public class Card implements Comparable<Card>{
 
 	private String suit;
 	private String rank;
-	private static final String[] SUITS = new String[] { " Clubs ", "Diamonds", "Hearts ", "Spades "};
-	private static final String[] RANKS = new String[] {" Two ", "Three", "Four ", "Five ", " Six ", "Seven",
-			"Eight", "Nine ", " Ten ", "Jack ", "Queen ", "King ", " Ace " };
+	private static final String[] SUITS = DeckConstants.getSUITS();
+	private static final String[] RANKS = DeckConstants.getRANKS();
 	
 
 	public Card() {
@@ -115,19 +114,7 @@ public class Card implements Comparable<Card>{
 		return rank;
 	}
 	
-	/**
-	 * @return String[] the sUITS list
-	 */
-	public static String[] getSUITS() {
-		return SUITS;
-	}
 
-	/**
-	 * @return String[] the rANKS list
-	 */
-	public static String[] getRANKS() {
-		return RANKS;
-	}
 
 	// Private helper methods
 	/**

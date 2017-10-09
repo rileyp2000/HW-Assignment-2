@@ -12,8 +12,8 @@ public class Deck {
 	private int topCard;
 	private boolean sorted;
 
-	private static final int NUMSUITS = (Card.getSUITS()).length;
-	private static final int NUMCARDS = (Card.getRANKS()).length;
+	private static final int NUMSUITS = (DeckConstants.getSUITS()).length;
+	private static final int NUMCARDS = (DeckConstants.getRANKS()).length;
 	private static final int TOTALCARDS = NUMSUITS * NUMCARDS;
 
 	public Deck() {
@@ -71,8 +71,8 @@ public class Deck {
 		// the new deck
 		Card[] cards = new Card[TOTALCARDS];
 		// the official suits and ranks
-		String[] suits = Card.getSUITS();
-		String[] ranks = Card.getRANKS();
+		String[] suits = DeckConstants.getSUITS();
+		String[] ranks = DeckConstants.getRANKS();
 		// tracks which card to add
 		int cardCounter = 0;
 

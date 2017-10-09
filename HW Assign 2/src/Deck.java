@@ -69,7 +69,7 @@ public class Deck {
 	 */
 	private Card[] createDeck(boolean sorted) {
 		// the new deck
-		Card[] cards = new Card[52];
+		Card[] cards = new Card[TOTALCARDS];
 		// the official suits and ranks
 		String[] suits = Card.getSUITS();
 		String[] ranks = Card.getRANKS();
@@ -204,10 +204,30 @@ public class Deck {
 		do {
 			randCard = (int) (Math.random() * numCards);
 		} while (cards[randCard] == null);
-
-		return cards[randCard];
+		Card c = remove(randCard);
+		return c;
 	}
-
+	
+	/**
+	 * 
+	 * @param index the index to be removed
+	 * @return the removed card
+	 */
+	public Card remove(int index){
+		Card[] replace = new Card[cards.length - 1];
+		
+		for(int i = 0; i < index; i++)
+			replace[i] = cards[i];
+		
+		Card ret = new Card(cards[index]);
+		
+		for(int i = index; i < cards.length-1; i++)
+			replace[i] = cards[i+1];
+		
+		this.setCards(replace);
+		return ret;
+	}
+	
 	/**
 	 * <p>
 	 * Sorts the deck according to the selection sort algorithm. Taken from the

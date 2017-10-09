@@ -21,6 +21,11 @@ public class Card implements Comparable<Card>{
 		rank = RANKS[2];
 	}
 	
+	public Card(Card c){
+		suit = getSuit();
+		rank = getRankStr();
+	}
+	
 	/**
 	 * 
 	 * @param sui Suit represented as an Integer between 0 and 3 inclusive

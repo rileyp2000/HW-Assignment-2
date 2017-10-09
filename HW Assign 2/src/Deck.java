@@ -205,6 +205,7 @@ public class Deck {
 			randCard = (int) (Math.random() * numCards);
 		} while (cards[randCard] == null);
 		Card c = remove(randCard);
+		this.setTopCard(topCard - 1 );
 		return c;
 	}
 	

@@ -22,6 +22,13 @@ public class Deck {
 		topCard = cards.length - 1;
 
 	}
+	
+	public Deck(Deck d) {
+		sorted = d.sorted;
+		Card[] card = d.getCards();
+		cards = card;
+		topCard = d.topCard;
+	}
 
 	/**
 	 * 
@@ -90,6 +97,11 @@ public class Deck {
 		return cards;
 
 	}
+	
+	
+	public Card[] getCards() {
+		return cards;
+	}
 
 	/**
 	 * <p>
@@ -149,6 +161,9 @@ public class Deck {
 	 * @return If the decks are equal
 	 */
 	public boolean equals(Deck d) {
+		Deck d1 = new Deck(this);
+		Deck d2 = new Deck(d);
+		
 		if (cards.length != d.cards.length)
 			return false;
 

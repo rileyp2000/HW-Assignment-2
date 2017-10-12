@@ -18,7 +18,7 @@ public class Deck {
 
 	public Deck() {
 		sorted = true;
-		cards = createDeck(sorted);
+		cards = createDeck();
 		topCard = cards.length - 1;
 
 	}
@@ -29,7 +29,10 @@ public class Deck {
 	 *            if sorted or not
 	 */
 	public Deck(boolean s) {
-		cards = createDeck(s);
+		cards = createDeck();
+		// shuffles the deck if it's not supposed to be sorted
+		if (!sorted)
+			shuffle();
 		topCard = cards.length - 1;
 		sorted = s;
 	}
@@ -63,11 +66,9 @@ public class Deck {
 
 	/**
 	 * 
-	 * @param sorted
-	 *            if sorted or not
 	 * @return array of cards that represent a deck
 	 */
-	private Card[] createDeck(boolean sorted) {
+	private Card[] createDeck() {
 		// the new deck
 		Card[] cards = new Card[TOTALCARDS];
 		// the official suits and ranks
@@ -82,9 +83,6 @@ public class Deck {
 				cardCounter++;
 			}
 		}
-		// shuffles the deck if it's not supposed to be sorted
-		if (!sorted)
-			shuffle();
 
 		// sets the value of the topcard;
 		setTopCard(cards.length - 1);
@@ -198,11 +196,10 @@ public class Deck {
 	 * @return a randomly picked card from the deck
 	 */
 	public Card pick() {
-		int numCards = cards.length - 1;
 		int randCard = 0;
 
 		do {
-			randCard = (int) (Math.random() * numCards);
+			randCard = (int) (Math.random() * topCard);
 		} while (cards[randCard] == null);
 		Card c = remove(randCard);
 		this.setTopCard(topCard - 1 );

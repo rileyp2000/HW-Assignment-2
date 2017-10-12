@@ -21,8 +21,8 @@ public class Card implements Comparable<Card>{
 	}
 	
 	public Card(Card c){
-		suit = getSuit();
-		rank = getRankStr();
+		suit = c.getSuit();
+		rank = c.getRankStr();
 	}
 	
 	/**

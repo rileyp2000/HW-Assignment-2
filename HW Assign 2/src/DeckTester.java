@@ -16,28 +16,38 @@ public class DeckTester {
 	 *void
 	 */
 	public static void main(String[] args) {
-		Deck d = new Deck();
-		System.out.println(d);
-	
-		//System.out.println("\n\n\n");
-		//System.out.println(d);
-		d.shuffle();
-		System.out.println("\n\nShuffled: \n" + d);
+		//NOTE: PLEASE RUN TESTS IN INDEPENDANT BLOCKS BECAUSE SOME TEST WILL IMPACT OTHER TESTS NEGATIVELY!!!!!
 		
-		System.out.println("Picked Card: " + d.pick());
-	
-		d.selectionSort();
-		System.out.println("Selection Sort: \n" + d);
+		Deck d1 = new Deck();
+		System.out.println("Deck 1: \n" + d1 + "\n");
+		//d1.shuffle();
+		//System.out.println(d1);
+		Deck d2 = new Deck(false);
+		System.out.println("Deck 2: \n" + d2 + "\n\n");
+		/*
+		Deck[] hands = d1.deal(3, 5);
+		for(Deck d: hands)
+			System.out.println(d);*/
 		
-		d.shuffle();
+		/*
+		Deck[] hands = d1.deal(5, 11);
+		for(Deck d: hands)
+			System.out.println(d);	*/	
 		
-		d.mergeSort();
-		System.out.println("MergeSort: \n" + d + "\n\n\n");
-				
-		Deck[] test = d.deal(2,3);
-		for(Deck de : test)
-			System.out.println(de);
-
+		/*System.out.println(d1.equals(d2));
+		Card c1 = d1.pick();
+		Card c2 = d2.pick();
+		System.out.println(c1.compareTo(c2));*/
+		
+		
+		d1.shuffle();
+		d1.selectionSort();
+		System.out.println("Selection: \n" + d1);
+		
+		
+		d2.shuffle();
+		d2.mergeSort();
+		System.out.println("Merge: \n" + d2);
 	}
 
 }

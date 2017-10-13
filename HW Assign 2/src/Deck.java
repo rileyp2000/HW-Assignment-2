@@ -185,7 +185,7 @@ public class Deck {
 	public Deck[] deal(int numHands, int numCards) {
 		Deck[] ret = new Deck[numHands];
 
-		if (numHands * numCards <= TOTALCARDS) {
+		if (numHands * numCards <= topCard) {
 			for (int i = 0; i < numHands; i++) {
 				Card[] hand = new Card[numCards];
 				ret[i] = new Deck();
@@ -247,7 +247,7 @@ public class Deck {
 	 * </p>
 	 */
 	public void selectionSort() {
-		for (int n = cards.length; n > 1; n--) {
+		for (int n = topCard; n > 1; n--) {
 
 			int max = 0;
 			for (int i = 1; i < n; i++) {
@@ -267,9 +267,9 @@ public class Deck {
 	 * </p>
 	 */
 	public void mergeSort() {
-		int n = cards.length;
-		Card[] temp = new Card[n];
-		recursiveSort(cards, 0, n - 1, temp);
+		int n = topCard;
+		Card[] temp = new Card[n+1];
+		recursiveSort(cards, 0, n, temp);
 	}
 
 	/**

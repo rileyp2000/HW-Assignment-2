@@ -20,7 +20,21 @@ public class DeckTester {
 	public static void main(String[] args) {
 		//NOTE: PLEASE RUN TESTS IN INDEPENDANT BLOCKS BECAUSE SOME TEST WILL IMPACT OTHER TESTS NEGATIVELY!!!!!
 		
-		Deck d1 = new Deck();
+		
+		Card c1 = new Card();
+		System.out.println(c1);
+		Card c2 = new Card(c1);
+		System.out.println(c1.equals(c2));
+		Card c3 = new Card(2,2);
+		Card c4 = new Card("Ace", "Three");
+		System.out.println(c3.compareTo(c4));
+		Card c5 = new Card("ace", 5);
+		Card c6 = new Card(1, "Jack");
+		
+		
+		
+		
+		//Deck d1 = new Deck();
 		//System.out.println("Deck 1: \n" + d1 + "\n");
 		//Deck d3 = new Deck(d1);
 		//d1.shuffle();
@@ -29,10 +43,10 @@ public class DeckTester {
 		//System.out.println("Deck 2: \n" + d2 + "\n\n");
 		//Deck d4 = new Deck(d2);
 		
-		Deck[] hands = d1.deal(3, 5);
+		/*Deck[] hands = d1.deal(3, 5);
 		hands[0].shuffle();
 		for(Deck d: hands)
-			System.out.println(d);
+			System.out.println(d);*/
 		
 		/*
 		Deck[] hands = d1.deal(5, 11);

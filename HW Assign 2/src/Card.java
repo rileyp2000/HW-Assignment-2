@@ -17,7 +17,7 @@ public class Card implements Comparable<Card>{
 
 	public Card() {
 		suit = SUITS[0];
-		rank = RANKS[2];
+		rank = RANKS[0];
 	}
 	
 	public Card(Card c){

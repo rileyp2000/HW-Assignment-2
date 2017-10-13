@@ -27,7 +27,7 @@ public class DeckTester {
 		//System.out.println(d1);
 		//Deck d2 = new Deck(false);
 		//System.out.println("Deck 2: \n" + d2 + "\n\n");
-		Deck d4 = new Deck(d2);
+		//Deck d4 = new Deck(d2);
 		
 		Deck[] hands = d1.deal(3, 5);
 		hands[0].shuffle();

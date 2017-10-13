@@ -155,7 +155,7 @@ public class Card implements Comparable<Card>{
 	 * @param other another card 
 	 */
 	public boolean equals(Object other){
-		if(other != null)
+		if(other instanceof Card)
 			return suit.equals(((Card)other).getSuit()) && rank.equals(((Card)other).getRankStr());
 		else
 			return false;

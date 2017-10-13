@@ -19,7 +19,6 @@ public class Deck {
 	public Deck() {
 		sorted = true;
 		cards = createDeck();
-		topCard = cards.length - 1;
 
 	}
 	
@@ -40,7 +39,7 @@ public class Deck {
 		// shuffles the deck if it's not supposed to be sorted
 		if (!sorted)
 			shuffle();
-		topCard = cards.length - 1;
+		
 		sorted = s;
 	}
 
@@ -110,16 +109,16 @@ public class Deck {
 	 */
 	public void shuffle() {
 		// what to replace the unshuffled deck with
-		Card[] replace = new Card[TOTALCARDS];
+		Card[] replace = new Card[topCard];
 
 		// takes a random card from the original cards and then adds it to the shuffled
 		// array
-		for (int i = 0; i < TOTALCARDS; i++) {
-			int rand = (int) (Math.random() * TOTALCARDS);
+		for (int i = 0; i <= topCard; i++) {
+			int rand = (int) (Math.random() * topCard);
 
 			// makes sure doesnt shuffle a previously chosen card
 			while (cards[rand] == null)
-				rand = (int) (Math.random() * TOTALCARDS);
+				rand = (int) (Math.random() * topCard);
 
 			replace[i] = cards[rand];
 			cards[rand] = null;
@@ -134,7 +133,7 @@ public class Deck {
 
 	/**
 	 * <p>
-	 * Converts deck to String, represented differentally based on type of Deck
+	 * Converts deck to String, represented differently based on type of Deck
 	 * </p>
 	 */
 	public String toString() {
@@ -147,8 +146,8 @@ public class Deck {
 
 			}
 		} else {
-			for (Card c : cards)
-				result += c.toString() + "\n";
+			for (int i = 0; i <= topCard; i++)
+				result += cards[i].toString() + "\n";
 		}
 		return result;
 

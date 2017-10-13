@@ -21,17 +21,18 @@ public class DeckTester {
 		//NOTE: PLEASE RUN TESTS IN INDEPENDANT BLOCKS BECAUSE SOME TEST WILL IMPACT OTHER TESTS NEGATIVELY!!!!!
 		
 		Deck d1 = new Deck();
-		System.out.println("Deck 1: \n" + d1 + "\n");
+		//System.out.println("Deck 1: \n" + d1 + "\n");
 		Deck d3 = new Deck(d1);
 		//d1.shuffle();
 		//System.out.println(d1);
 		Deck d2 = new Deck(false);
-		System.out.println("Deck 2: \n" + d2 + "\n\n");
+		//System.out.println("Deck 2: \n" + d2 + "\n\n");
 		Deck d4 = new Deck(d2);
-		/*
+		
 		Deck[] hands = d1.deal(3, 5);
+		hands[0].shuffle();
 		for(Deck d: hands)
-			System.out.println(d);*/
+			System.out.println(d);
 		
 		/*
 		Deck[] hands = d1.deal(5, 11);
@@ -43,21 +44,21 @@ public class DeckTester {
 		Card c2 = d2.pick();
 		System.out.println(c1.compareTo(c2));*/
 		
-		
+		/*
 		d1.shuffle();
 		d1.selectionSort();
 		RankComparator rc = new RankComparator();
 		Arrays.sort(d3.getCards(),rc);
 		System.out.println("Selection: \n" + d1);
-		System.out.println(d1.equals(d3));
+		System.out.println(d1.equals(d3));*/
 		
 		
 		
-		d2.shuffle();
+		/*d2.shuffle();
 		d2.mergeSort();
 		Arrays.sort(d4.getCards(),rc);
 		System.out.println("Merge: \n" + d2);
-		System.out.println(d1.equals(d3));
+		System.out.println(d1.equals(d3));*/
 	}
 
 }

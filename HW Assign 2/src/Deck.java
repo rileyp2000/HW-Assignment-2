@@ -109,7 +109,7 @@ public class Deck {
 	 */
 	public void shuffle() {
 		// what to replace the unshuffled deck with
-		Card[] replace = new Card[topCard];
+		Card[] replace = new Card[TOTALCARDS];
 
 		// takes a random card from the original cards and then adds it to the shuffled
 		// array
@@ -118,7 +118,7 @@ public class Deck {
 
 			// makes sure doesnt shuffle a previously chosen card
 			while (cards[rand] == null)
-				rand = (int) (Math.random() * topCard);
+				rand = (int) (Math.random() * (topCard + 1));
 
 			replace[i] = cards[rand];
 			cards[rand] = null;

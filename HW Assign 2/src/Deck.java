@@ -76,7 +76,7 @@ public class Deck {
 	 */
 	private Card[] createDeck() {
 		// the new deck
-		Card[] cards = new Card[TOTALCARDS];
+		Card[] cards = new Card[topCard + 1];
 		// the official suits and ranks
 		String[] suits = DeckConstants.getSUITS();
 		String[] ranks = DeckConstants.getRANKS();

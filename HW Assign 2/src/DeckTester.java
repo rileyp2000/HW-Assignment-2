@@ -45,48 +45,47 @@ public class DeckTester {
 		Card c5 = new Card("ace", 5);
 		Card c6 = new Card(1, "Jack");
 		
+		System.out.println();		
+		
+		Deck d1 = new Deck();
+		out.println("Deck 1: \n" + d1 + "\n");
+		Deck d3 = new Deck(d1);
+		d1.shuffle();
+		out.println(d1);
+		Deck d2 = new Deck(false);
+		out.println("Deck 2: \n" + d2 + "\n\n");
+		Deck d4 = new Deck(d2);
 		
 		
-		
-		//Deck d1 = new Deck();
-		//out.println("Deck 1: \n" + d1 + "\n");
-		//Deck d3 = new Deck(d1);
-		//d1.shuffle();
-		//out.println(d1);
-		//Deck d2 = new Deck(false);
-		//out.println("Deck 2: \n" + d2 + "\n\n");
-		//Deck d4 = new Deck(d2);
-		
-		/*Deck[] hands = d1.deal(3, 5);
-		hands[0].shuffle();
-		for(Deck d: hands)
-			out.println(d);*/
-		
-		/*
-		Deck[] hands = d1.deal(5, 11);
-		for(Deck d: hands)
-		 	out.println(d);	*/	
-		
-		/*out.println(d1.equals(d2));
-		Card c1 = d1.pick();
-		Card c2 = d2.pick();
-		out.println(c1.compareTo(c2));*/
-		
-		/*
 		d1.shuffle();
 		d1.selectionSort();
 		RankComparator rc = new RankComparator();
 		Arrays.sort(d3.getCards(),rc);
 		out.println("Selection: \n" + d1);
-		out.println(d1.equals(d3));*/
+		out.println(d1.equals(d3));
 		
 		
 		
-		/*d2.shuffle();
+		d2.shuffle();
 		d2.mergeSort();
 		Arrays.sort(d4.getCards(),rc);
 		out.println("Merge: \n" + d2);
-		out.println(d1.equals(d3));*/
+		out.println(d1.equals(d3));
+		
+		Deck[] hands = d1.deal(3, 5);
+		hands[0].shuffle();
+		for(Deck d: hands)
+			out.println(d);
+		
+		
+		hands = d2.deal(5, 11);
+		for(Deck d: hands)
+		 	out.println(d);	
+		
+		out.println(d1.equals(d2));
+		Card c7 = d1.pick();
+		Card c8 = d2.pick();
+		out.println(c1.compareTo(c2));
 		
 		out.close();
 	}

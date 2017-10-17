@@ -70,7 +70,7 @@ public class DeckTester {
 		d2.mergeSort();
 		Arrays.sort(d4.getCards(),rc);
 		out.println("Merge: \n" + d2);
-		out.println(d1.equals(d3));
+		out.println("Are the decks equal after sort?" + d1.equals(d3));
 		
 		Deck[] hands = d1.deal(3, 5);
 		hands[0].shuffle();

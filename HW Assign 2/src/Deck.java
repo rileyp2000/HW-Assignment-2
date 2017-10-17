@@ -168,6 +168,8 @@ public class Deck {
 	public boolean equals(Deck d) {
 		Deck d1 = new Deck(this);
 		Deck d2 = new Deck(d);
+		d1.mergeSort();
+		d2.mergeSort();
 		
 		if (cards.length != d.cards.length)
 			return false;

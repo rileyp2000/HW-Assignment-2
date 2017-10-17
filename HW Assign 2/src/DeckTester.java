@@ -78,9 +78,16 @@ public class DeckTester {
 			out.println(d);
 		
 		
-		hands = d2.deal(5, 11);
-		for(Deck d: hands)
-		 	out.println(d);	
+		try {
+			Deck[] hand2 = d2.deal(5, 11);
+			for(Deck d: hand2)
+				out.println(d);
+			}
+		catch(NullPointerException ex){
+			out.println("Tried to deal too many cards!");
+		}
+		
+	
 		
 		out.println(d1.equals(d2));
 		Card c7 = d1.pick();

@@ -25,7 +25,9 @@ public class Deck {
 	public Deck(Deck d) {
 		sorted = d.sorted;
 		Card[] card = d.getCards();
-		cards = card;
+		cards = new Card[d.topCard + 1];
+		for(int i = 0 ; i < cards.length; i ++)
+			cards[i] = new Card(card[i]);
 		topCard = d.topCard;
 	}
 

@@ -22,6 +22,10 @@ public class Deck {
 
 	}
 	
+	/**
+	 * 
+	 * @param d another deck to be copied
+	 */
 	public Deck(Deck d) {
 		sorted = d.sorted;
 		Card[] card = d.getCards();

@@ -20,6 +20,10 @@ public class Card implements Comparable<Card>{
 		rank = RANKS[0];
 	}
 	
+	/**
+	 * 
+	 * @param c another card to be copied
+	 */
 	public Card(Card c){
 		suit = c.getSuit();
 		rank = c.getRankStr();

@@ -163,11 +163,11 @@ public class Deck {
 		Deck d1 = new Deck(this);
 		Deck d2 = new Deck(d);
 		
-		if (cards.length != d.cards.length)
+		if (topCard != d.topCard)
 			return false;
 
 		for (int i = 0; i < TOTALCARDS; i++) {
-			if (cards[i] != d.cards[i])
+			if (!cards[i].equals(d.cards[i]))
 				return false;
 		}
 
@@ -348,3 +348,4 @@ public class Deck {
 	}
 
 }
+ 
